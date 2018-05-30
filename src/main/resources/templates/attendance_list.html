@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time-Slot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+<div class="container w-75">
+    <div class="row " style="margin-top: 50px">
+        <div class="col-md-3 float-left">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/logo.png}" class="w-75 float-left">
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-3 text-muted mb-2 float-left">
+            <p>Times slot day</p>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="row w-100">
+        <table class="table table-striped container">
+            <tr>
+                <td>Class</td>
+                <td>Subject</td>
+                <td>Time slot</td>
+                <td>Status</td>
+            </tr>
+            <tr th:each="attendanceSlots : ${attendanceslot}" class="row">
+                <td class="col-md-1" th:text="${attendanceSlots.id}"></td>
+                <td class="col-md-2 product-name" th:text="${attendanceSlots.classInfo.id}"></td>
+                <td class="col-md-2 product-name" th:text="${attendanceSlots.timeslots.time}"></td>
+                <td class="col-md-2 product-name" th:text="${attendanceSlots.subject_id}"></td>
+                <td class="col-md-2 product-name" th:text="${attendanceSlots.attendance_date}"></td>
+                <td class="col-md-2 product-name" th:text="${attendanceSlots.status}"></td>
+                <td class="col-md-2 product-name">
+                    <a class="page-link" th:href="'/attend/'+${attendanceSlots.id}">view</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
